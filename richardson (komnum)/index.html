@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Richardson Extrapolation - Nurrachmad Widyanto</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Richardson Extrapolation";
+    var mkdocs_page_input_path = "richardson (komnum).md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Nurrachmad Widyanto</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <p class="caption"><span class="caption-text">Komputasi Numerik</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../tugas1komnum/">Error In Numerical Computation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Numerical%20Solution%20%28Komnum%29/">Numerical Solution</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../eliminasi%20gauss%20%28komnum%29/">Eliminasi Gauss</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Romberg%20%28komnum%29/">Integrasi Romberg</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Richardson Extrapolation</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#teori">Teori</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#contoh-program">Contoh Program</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#hasil-running">Hasil Running</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../metode%20euler%20%28komnum%29/">Metode Euler</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../MonteCarlo/">Monte Carlo</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Nurrachmad Widyanto</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Komputasi Numerik &raquo;</li>
+        
+      
+    
+    <li>Richardson Extrapolation</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="richardson-extrapolation"><strong>Richardson Extrapolation</strong></h1>
+<blockquote>
+<p>Dalam analisis numerik, Richardson Extrapolation adalah metode percepatan urutan, yang digunakan untuk meningkatkan laju konvergensi suatu urutan. </p>
+<p>Richardson Extrapolation termasuk integrasi Romberg, yang menerapkan ekstrapolasi Richardson pada aturan trapesium, dan algoritma Bulirsch-Stoer untuk menyelesaikan persamaan diferensial biasa.</p>
+</blockquote>
+<h3 id="teori"><strong>Teori</strong></h3>
+<p>Dalam rumus :</p>
+<p><strong><em>( f (x + h) - f (x - h) ) / (2 h)</em></strong></p>
+<p>untuk nilai h yang sangat kecil, dua fungsi evaluasi <em>f (x + h)</em> dan <em>f (x - h)</em> akan menjadi kira-kira sama, dan oleh karena itu pembatalan subtraktif akan terjadi. Oleh karena itu, tidak disarankan untuk menggunakan nilai h yang semakin kecil.</p>
+<p>Kita dapat mencoba untuk memperkirakan nilai tepat <em>e</em> dengan perkiraan <em>a(h)</em>. Dalam hal ini, <em>e</em> adalah turunan dari <em>f (1) (x)</em> dan perkiraannya adalah <em>( h ) = (f (x + h) - f (x - h)) / (2 h)</em>. Misalkan sekarang bahwa kesalahan aproksimasi didefinisikan oleh serangkaian bentuk Taylor :</p>
+<p align = "center"><i>e = a(h) + K h<sup>n</sup> + o(h<sup>n</sup>)</i></p>
+
+<p>Apabila menggunakan <em>h / 2</em> :</p>
+<p align = "center"><i>e = a(h/2) + K (h/2)n + o((h/2)n)</i>
+<br><i>= a(h/2) + K/2n h<sup>n</sup> + o(h<sup>n</sup>)</i></p>
+
+<p>Mengalikan kedua ekspresi ini dengan 2<em>n</em> dan mengurangi hasil persamaan pertama</p>
+<p align = "center"><i>2n<sup>e</sup> − e = 2na(h/2) − a(h) + K/2n h<sup>n</sup> − K h<sup>n</sup> + o(h<sup>n</sup>)</i></p>
+
+<p>Perhatikan bahwa istilah h<sup>n</sup> dibatalkan dan kita dibiarkan dengan</p>
+<p align = "center"><i>(2n − 1)e = 2na(h/2) − a(h) + o(h<sup>n</sup>)</i></p>
+
+<p>Jika kita melihat seri Taylor lengkap untuk rumus perbedaan-terpusat yang terpusat, kita perhatikan bahwa istilah kesalahannya dalam bentuk Knh<sup>n</sup>. Dapat kita tulis dengan :</p>
+<p align = center><i>K1 = −1/6 f(3)(x)h<sup>2</sup>, etc.</i></p>
+
+<h3 id="contoh-program"><strong>Contoh Program</strong></h3>
+<pre><code class="python">from math import *
+def zeros(n,m):
+    Z=[]
+    for i in range(n):
+        Z.append([0]*m)
+    return Z
+
+def D(Func,a,h):
+        return (Func(a+h)-Func(a-h))/(2*h)
+
+def Richardson_dif(func,a): 
+    '''Richardson extrapolation method for numerical calculation of first derivative '''
+    k=9 
+    L=zeros(k,k)
+    for I in range(k):
+        L[I][0]=D(func,a,1/(2**(I+1)))
+    for j in range(1,k):
+        for i in range(k-j):
+            L[i][j]=((4**(j))*L[i+1][j-1]-L[i][j-1])/(4**(j)-1)
+    return L[0][k-1]
+
+print('&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; DIFERENSIASI NUMERIK DARI &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;')
+print(&quot;=======================================================================&quot;)
+print('f = -0.1*x**4-0.15*x**3-0.5*x**2-0.25*x+1.2 dengan x = 0.5')
+print(&quot;=======================================================================&quot;)
+print('%04.20f'%Richardson_dif(lambda x: -0.1*x**4-0.15*x**3-0.5*x**2-0.25*x+1.2 ,0.5))
+print(&quot;=======================================================================&quot;)
+print('diff(2**cos(pi+sin(x)) dengan x = pi/2 adalah = %04.20f'%Richardson_dif(lambda x: 2**cos(pi+sin(x)),pi/3))
+
+
+</code></pre>
+
+<h3 id="hasil-running"><strong>Hasil Running</strong></h3>
+<pre><code class="python">&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; DIFERENSIASI NUMERIK DARI &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+=======================================================================
+f = -0.1*x**4-0.15*x**3-0.5*x**2-0.25*x+1.2 dengan x = 0.5
+=======================================================================
+-0.91250000000000530687
+=======================================================================
+diff(2**cos(pi+sin(x)) dengan x = pi/2 adalah = 0.16849558398154249050
+&gt;&gt;&gt; 
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../metode%20euler%20%28komnum%29/" class="btn btn-neutral float-right" title="Metode Euler">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Romberg%20%28komnum%29/" class="btn btn-neutral" title="Integrasi Romberg"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../Romberg%20%28komnum%29/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../metode%20euler%20%28komnum%29/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

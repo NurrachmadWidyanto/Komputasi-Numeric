@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Metode Euler - Nurrachmad Widyanto</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Metode Euler";
+    var mkdocs_page_input_path = "metode euler (komnum).md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Nurrachmad Widyanto</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <p class="caption"><span class="caption-text">Komputasi Numerik</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../tugas1komnum/">Error In Numerical Computation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Numerical%20Solution%20%28Komnum%29/">Numerical Solution</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../eliminasi%20gauss%20%28komnum%29/">Eliminasi Gauss</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Romberg%20%28komnum%29/">Integrasi Romberg</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../richardson%20%28komnum%29/">Richardson Extrapolation</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Metode Euler</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#contoh-soal">Contoh soal</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#code-program-dengan-python">Code Program dengan Python</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../MonteCarlo/">Monte Carlo</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Nurrachmad Widyanto</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Komputasi Numerik &raquo;</li>
+        
+      
+    
+    <li>Metode Euler</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="methode-euler">Methode Euler</h1>
+<p>​   Dalam <a href="https://translate.googleusercontent.com/translate_c?client=srp&amp;depth=1&amp;hl=id&amp;rurl=translate.google.com&amp;sl=en&amp;sp=nmt4&amp;tl=id&amp;u=https://en.m.wikipedia.org/wiki/Mathematics&amp;usg=ALkJrhjDWC7mFYv9qZjq7EpYkcEL9stHPA">matematika</a> dan <a href="https://translate.googleusercontent.com/translate_c?client=srp&amp;depth=1&amp;hl=id&amp;rurl=translate.google.com&amp;sl=en&amp;sp=nmt4&amp;tl=id&amp;u=https://en.m.wikipedia.org/wiki/Computational_science&amp;usg=ALkJrhhMvXEENQGAcZ8rfwcBV1ty27UwVg">ilmu komputasi</a> , <strong>metode Euler</strong> (juga disebut <strong>metode forward Euler</strong> ) adalah prosedur <a href="https://translate.googleusercontent.com/translate_c?client=srp&amp;depth=1&amp;hl=id&amp;rurl=translate.google.com&amp;sl=en&amp;sp=nmt4&amp;tl=id&amp;u=https://en.m.wikipedia.org/wiki/Numerical_analysis&amp;usg=ALkJrhiHNA08sVwe_pQQoM47EMj_WihQUw">numerik</a> orde pertama untuk menyelesaikan <a href="https://translate.googleusercontent.com/translate_c?client=srp&amp;depth=1&amp;hl=id&amp;rurl=translate.google.com&amp;sl=en&amp;sp=nmt4&amp;tl=id&amp;u=https://en.m.wikipedia.org/wiki/Ordinary_differential_equation&amp;usg=ALkJrhj5IdtWdujDH-_1GB2stUS1e1jHQw">persamaan diferensial biasa</a> (ODE) dengan <a href="https://translate.googleusercontent.com/translate_c?client=srp&amp;depth=1&amp;hl=id&amp;rurl=translate.google.com&amp;sl=en&amp;sp=nmt4&amp;tl=id&amp;u=https://en.m.wikipedia.org/wiki/Initial_value_problem&amp;usg=ALkJrhhMCcGHiTFoHZ-fNHkePEgI-kBdsQ">nilai awal yang</a> diberikan. Ini adalah <a href="https://translate.googleusercontent.com/translate_c?client=srp&amp;depth=1&amp;hl=id&amp;rurl=translate.google.com&amp;sl=en&amp;sp=nmt4&amp;tl=id&amp;u=https://en.m.wikipedia.org/wiki/Explicit_and_implicit_methods&amp;usg=ALkJrhgMyCOq0YQEYnoWkMzViVyiGMLwIA">metode eksplisit</a> paling dasar untuk <a href="https://translate.googleusercontent.com/translate_c?client=srp&amp;depth=1&amp;hl=id&amp;rurl=translate.google.com&amp;sl=en&amp;sp=nmt4&amp;tl=id&amp;u=https://en.m.wikipedia.org/wiki/Numerical_ordinary_differential_equations&amp;usg=ALkJrhhSiv-erFNcLX_saKOf2cHK4Shl4w">integrasi numerik persamaan diferensial biasa</a> dan merupakan <a href="https://translate.googleusercontent.com/translate_c?client=srp&amp;depth=1&amp;hl=id&amp;rurl=translate.google.com&amp;sl=en&amp;sp=nmt4&amp;tl=id&amp;u=https://en.m.wikipedia.org/wiki/Runge%E2%80%93Kutta_method&amp;usg=ALkJrhhwIzjYIcv_nVtmKWsBcjP7a4mMbA">metode Runge-Kutta</a> paling sederhana. Metode Euler dinamai <a href="https://translate.googleusercontent.com/translate_c?client=srp&amp;depth=1&amp;hl=id&amp;rurl=translate.google.com&amp;sl=en&amp;sp=nmt4&amp;tl=id&amp;u=https://en.m.wikipedia.org/wiki/Leonhard_Euler&amp;usg=ALkJrhjB04743Oiy6h6I7qfgSNgAYSz2PQ">Leonhard Euler</a> , yang memperlakukannya dalam bukunya <em><a href="https://translate.googleusercontent.com/translate_c?client=srp&amp;depth=1&amp;hl=id&amp;rurl=translate.google.com&amp;sl=en&amp;sp=nmt4&amp;tl=id&amp;u=https://en.m.wikipedia.org/wiki/Institutionum_calculi_integralis&amp;usg=ALkJrhh1Tc89QNZTcWuB1Co8divPc4WEgg">Institutionum calculi integralis</a></em> (diterbitkan 1768-1870). [<a href="https://translate.googleusercontent.com/translate_c?client=srp&amp;depth=1&amp;hl=id&amp;rurl=translate.google.com&amp;sl=en&amp;sp=nmt4&amp;tl=id&amp;u=https://en.m.wikipedia.org/wiki/Euler_method&amp;usg=ALkJrhhvr5EDmqbzf3GyrdrsZEj2XNIOcw#cite_note-1">1]</a></p>
+<p>​   Metode Euler adalah metode urutan pertama, yang berarti bahwa kesalahan lokal (kesalahan per langkah) sebanding dengan kuadrat ukuran langkah, dan kesalahan global (kesalahan pada waktu tertentu) sebanding dengan ukuran langkah. Metode Euler sering berfungsi sebagai dasar untuk membangun metode yang lebih kompleks, misalnya, metode <a href="https://translate.googleusercontent.com/translate_c?client=srp&amp;depth=1&amp;hl=id&amp;rurl=translate.google.com&amp;sl=en&amp;sp=nmt4&amp;tl=id&amp;u=https://en.m.wikipedia.org/wiki/Predictor%E2%80%93corrector_method&amp;usg=ALkJrhiJ-Z8eEH6Wlelmm5peOsKLX4f0Vw">prediktor-korektor</a> .</p>
+<p>​   Persamaan diferensial yang terdiri dari satu variabel bebas dinamakan persamaan diferensial parsial biasa (ODE). sementara itu, persamaan diferensial yang terdiri dari dua atau lebih variabel bebas dinamakan persamaan diferensial parsial Persamaan Diferensial - PDE). (ODE) memiliki bentik umum yaitu:</p>
+<p><img alt=" " src="../diferensial1.png" /></p>
+<h3 id="contoh-soal"><em>Contoh soal</em></h3>
+<p><img alt="" src="../soal1.png" /></p>
+<h5 id="code-program-dengan-python">Code Program dengan Python</h5>
+<pre><code class="python">print(&quot;f(x,y)=1+x^2&quot;)
+print(&quot;yi+1 = y1 + hf(xi+yi)&quot;)
+x1 = float(input(&quot;Masukkan x1= &quot;))
+x2 = float(input(&quot;Masukkan x2= &quot;))
+
+h = 1.01-x1 #Langsung saya atur sendiri karena yang dicari f(x,y) nilai x-nya=1.01
+n=4 #jumlah x ada 4 yaitu 1, 1.01, 1.02, 1.03
+xi = -4
+hasil = xi
+y=0
+for i in range(n):
+    print(&quot;hasil dari y&quot;+str(i)+&quot;= &quot;+ str(hasil))
+    hasil = xi + h*(1+(x1+y)**2)
+    y+=h
+    xi=hasil
+</code></pre>
+
+<p>pada bagian pertama terdapat variable x1 adalah x awal dan x2 merupakan x akhir. karena di soal terdapat nx=3 yaitu x0=1, x1=1,01, x3=1,02 x2=1,03 maka h= xn-x0/n, hasilnya h = 0.01.</p>
+<p>xi adalah hasil awal yang kemudian akan dimasukkan pada prosess iterasi. Karena rumus eurel adalah y1 = y0 +h(f(x,y)) maka rumus barunya adalah y1=y0+h(1+x^2). variable y digunakan untuk penambahan nilai x agar selalu bertambah 0.01.</p>
+<pre><code class="html">&lt;script type=&quot;text/x-mathjax-config&quot;&gt;
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$$','$$'],['$','$']]}
+});
+&lt;/script&gt;
+  &lt;script type=&quot;text/javascript&quot; async
+  src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML&quot;&gt;
+&lt;/script&gt;
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../MonteCarlo/" class="btn btn-neutral float-right" title="Monte Carlo">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../richardson%20%28komnum%29/" class="btn btn-neutral" title="Richardson Extrapolation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../richardson%20%28komnum%29/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../MonteCarlo/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

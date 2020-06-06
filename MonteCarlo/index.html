@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Monte Carlo - Nurrachmad Widyanto</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Monte Carlo";
+    var mkdocs_page_input_path = "MonteCarlo.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Nurrachmad Widyanto</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <p class="caption"><span class="caption-text">Komputasi Numerik</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../tugas1komnum/">Error In Numerical Computation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Numerical%20Solution%20%28Komnum%29/">Numerical Solution</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../eliminasi%20gauss%20%28komnum%29/">Eliminasi Gauss</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Romberg%20%28komnum%29/">Integrasi Romberg</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../richardson%20%28komnum%29/">Richardson Extrapolation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../metode%20euler%20%28komnum%29/">Metode Euler</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Monte Carlo</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#metode-monte-carlo">Metode  Monte Carlo</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#algoritma-dan-contoh-metode-monte-carlo">Algoritma dan contoh metode monte carlo</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#algorithma">Algorithma</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#implemenasi-metode-carlo-dalam-python">implemenasi metode carlo dalam python</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#hasil-running">hasil running</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Nurrachmad Widyanto</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Komputasi Numerik &raquo;</li>
+        
+      
+    
+    <li>Monte Carlo</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="metode-dan-simulasi-monte-carlo"><strong>Metode dan Simulasi Monte Carlo</strong></h1>
+<h4 id="metode-monte-carlo">Metode  Monte Carlo</h4>
+<blockquote>
+<p>Metode <em>Monte Carlo</em> adalah <a href="http://id.wikipedia.org/wiki/Algoritma">algoritma </a><a href="http://id.wikipedia.org/wiki/Komputasi">kom<em>put</em>asi </a>untuk <a href="http://id.wikipedia.org/wiki/Simulasi">mensimulasikan</a> berbagai perilaku sistem fisika dan matematika. Penggunaan klasik metode ini adalah untuk mengevaluasi <a href="http://id.wikipedia.org/w/index.php?title=Integral_definit&amp;action=edit&amp;redlink=1">integral definit, </a>terutama integral multidimensi dengan syarat dan batasan yang rumit</p>
+<p>Melihat dari cara kerjanya metode <em>Monte Carlo</em> merupakan metode yang memberikan segala kemungkinan nilai dari suatu variabel. Metode <em>Monte Carlo</em> merupakan metode yang memanfaatkan <em>strong law of large number</em> dalam melakukan perhitungan, artinya semakin banyak variabel acak yang digunakan akan semakin baik pula pendekatan nilai eksaknya</p>
+</blockquote>
+<h4 id="algoritma-dan-contoh-metode-monte-carlo">Algoritma dan contoh metode monte carlo</h4>
+<ol>
+<li>Probabilitas pelemparan coin Ganda</li>
+</ol>
+<p>Dari teori peluang akan muncul:</p>
+<p>MM Î ¼ MB atau BM Î ½ BB Î ¼</p>
+<p>Dengan metode Monte Carlo dapatkan tingkat ketelitian sampai 0.01 untuk menyelesaikan kasus tersebut….</p>
+<p>Untuk mendapatkan ketelitian sampai 0,01 maka harus dilakukan pelemparan sebanyak 1000 (N_total) kali. Dari hasil pelemparan catat keluarnya angka-angka: </p>
+<p>P(MM) = N(MM)/N_total </p>
+<p>P(MB) = N(MB)/N_total </p>
+<p>P(BB) = N(BB)/N_total</p>
+<h5 id="algorithma">Algorithma</h5>
+<ol>
+<li>
+<p>Bangkitkan nilai 0/1 sebanyak 1000 kali (N=1000) dengan cara: n1 =(int)rand()%2 dan n2 =(int)rand()%2 </p>
+</li>
+<li>
+<p>Klasifikasi Jika n1=0 dan n2=0, maka MM=MM+1 Jika n1=0 dan n2=1 atau n1=1 dan n2=0 maka MB=MB+1 Jika n1=1 dan n2=1, maka BB=BB+1 </p>
+</li>
+<li>
+<p>Hitung probabilitas MM dengan cara N(MM)/N dan probabilitas untuk nilai MB serta BB</p>
+</li>
+</ol>
+<p>2.Menghitung Nilai Integral dengan monte carlo</p>
+<p>Luas area dicari = yang berwarna atau daerah dibawah garis fungsi f(x) = 2x </p>
+<p>Dengan dasar pemikiran tersebut diperoleh suatu perbandingan:</p>
+<p>BIla kita melakukan pelemparan coin sebanyak N kali, dan coin jatuh di bawah garis f(x) =2x sebanyak M kali. Maka:</p>
+<p><em>tugas programing</em></p>
+<h4 id="implemenasi-metode-carlo-dalam-python">implemenasi metode carlo dalam python</h4>
+<pre><code class="python">from scipy import random
+import numpy as np
+import matplotlib.pyplot as plt
+
+a = 0
+b = 2
+N=2500
+
+
+def func(x):
+    return (4-x**2)**0.5
+
+
+area = []
+for i in range(N):
+    xrand = np.zeros(N)
+
+    for i in range(len(xrand)):
+        xrand[i] = random.uniform(a,b)
+        integral = 0.0
+
+    for i in range(N):
+        integral+=func(xrand[i])
+
+    jawab = (b-a)/float(N)*integral
+    area.append(jawab)
+
+plt.title(&quot;Hasil phi&quot;)
+plt.hist(area,bins = 30, ec = 'black')
+plt.xlabel(&quot;Area&quot;)
+plt.show()
+
+</code></pre>
+
+<pre><code class="python">from scipy import random
+import numpy as np
+
+a = -1
+b = 1
+N=100
+xrand=np.zeros(N)
+yrand=np.zeros(N)
+zrand=np.zeros(N)
+integral=0.0
+for i in range(4):
+    for i in range(len(xrand)):
+        xrand[i]=random.uniform(a,b)
+
+    for i in range(len(yrand)):
+        yrand[i]=random.uniform(a,b)
+
+    for i in range(len(zrand)):
+        zrand[i]=random.uniform(a,b)
+
+    def func(x,y,z):
+        return (x**2)+(y**2)+(z**2)
+
+
+    for i in range(N):
+        integral+=func(xrand[i],yrand[i],zrand[i])
+
+jawab=(b-a)/float(N)*integral
+print(&quot;jawab: &quot;,jawab)
+</code></pre>
+
+<h4 id="hasil-running"><em>hasil running</em></h4>
+<pre><code class="python">jawab:  7.941487167529855
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../metode%20euler%20%28komnum%29/" class="btn btn-neutral" title="Metode Euler"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../metode%20euler%20%28komnum%29/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

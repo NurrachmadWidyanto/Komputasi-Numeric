@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Error In Numerical Computation - Nurrachmad Widyanto</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Error In Numerical Computation";
+    var mkdocs_page_input_path = "tugas1komnum.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Nurrachmad Widyanto</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <p class="caption"><span class="caption-text">Komputasi Numerik</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Error In Numerical Computation</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#kesalahan-dalam-perhitungan-numerik-error">Kesalahan dalam Perhitungan Numerik (Error)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#kesalahan">Kesalahan</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#definisi-maclaurin">DEFINISI MACLAURIN</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#berikut-algoritma-dari-maclaurin">Berikut algoritma dari maclaurin</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Numerical%20Solution%20%28Komnum%29/">Numerical Solution</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../eliminasi%20gauss%20%28komnum%29/">Eliminasi Gauss</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Romberg%20%28komnum%29/">Integrasi Romberg</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../richardson%20%28komnum%29/">Richardson Extrapolation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../metode%20euler%20%28komnum%29/">Metode Euler</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../MonteCarlo/">Monte Carlo</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Nurrachmad Widyanto</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Komputasi Numerik &raquo;</li>
+        
+      
+    
+    <li>Error In Numerical Computation</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="welcome-di-komputasi-numerik"><strong>Welcome di Komputasi Numerik </strong></h1>
+<h2 id="kesalahan-dalam-perhitungan-numerik-error"><strong>Kesalahan dalam Perhitungan Numerik (Error)</strong></h2>
+<blockquote>
+<h5 id="kesalahan">Kesalahan</h5>
+<p>Dalam Analisis Numerik kita dapat mengkarakterisasi kesalahan dalam pengukuran dan perhitungan sehubungan dengan <strong>keakuratan</strong> dan <strong>ketepatannya</strong></p>
+<p>Hubungan antara hasil yang tepat dan perkiraan dapat dirumuskan sebagai :</p>
+<p>​         nilai sebenarnya = aproksimasi + kesalahan</p>
+<p><strong>^-^ kesalahan</strong> <strong>absolut</strong> atau <strong>benar</strong> (Et) :</p>
+<p>​         Et= nilai sebenarnya - perkiraan</p>
+<p><strong>^-^ kesalahan relatif</strong> ( εtεt) :</p>
+<p>​         εt= nilai sebenarnya - perkiraannilai asli</p>
+<p>ada beberapa macam kesalahan yaitu :</p>
+<p>A. <strong>Kesalahan pembulatan</strong> terjadi karena komputer tidak dapat mewakili jumlah secara tepat.</p>
+<p>Ada dua sisi utama kesalahan pembulatan sering terlibat dengan perhitungan numerik.</p>
+<p>​ a. Komputer memiliki batas ukuran dan presisi pada angka yang dapat mereka simpan dan           hitung.</p>
+<p>​ b. Perhitungan numerik tertentu sangat sensitif terhadap kesalahan pembulatan. Ini bisa dari        struktur matematika perhitungan serta bagaimana komputer melakukan operasi. </p>
+<p>B. <strong>Kesalahan pemotongan</strong> muncul ketika Anda menggunakan perkiraan menggantikan ekspresi yang tepat dalam prosedur matematika. Salah satu contoh kesalahan pemotongan yang terbaik (dan sering digunakan) adalah pendekatan Taylor Series dari suatu fungsi.</p>
+</blockquote>
+<h3 id="definisi-maclaurin">DEFINISI MACLAURIN</h3>
+<blockquote>
+<p>Suatu fungsi f(x) yang memiliki turunan <img alt="f'(x)" src="https://s0.wp.com/latex.php?latex=f%27%28x%29&amp;bg=ffffff&amp;fg=666666&amp;s=0" />, <img alt="f''(x)" src="https://s0.wp.com/latex.php?latex=f%27%27%28x%29&amp;bg=ffffff&amp;fg=666666&amp;s=0" />, <img alt="f'''(x)" src="https://s0.wp.com/latex.php?latex=f%27%27%27%28x%29&amp;bg=ffffff&amp;fg=666666&amp;s=0" />, dan seterusnya yang kontinyu dalam interval <img alt="I" src="https://s0.wp.com/latex.php?latex=I&amp;bg=ffffff&amp;fg=666666&amp;s=0" /> dengan <img alt="a, x \in I" src="https://s0.wp.com/latex.php?latex=a%2C+x+%5Cin+I&amp;bg=ffffff&amp;fg=666666&amp;s=0" /> maka untuk <img alt="x" src="https://s0.wp.com/latex.php?latex=x&amp;bg=ffffff&amp;fg=666666&amp;s=0" /> disekitar <img alt="a" src="https://s0.wp.com/latex.php?latex=a&amp;bg=ffffff&amp;fg=666666&amp;s=0" /> yaitu <img alt="|x -a| &lt; \mathbb{R}" src="https://s0.wp.com/latex.php?latex=%7Cx+-a%7C+%3C+%5Cmathbb%7BR%7D&amp;bg=ffffff&amp;fg=666666&amp;s=0" />, <img alt="f(x)" src="https://s0.wp.com/latex.php?latex=f%28x%29&amp;bg=ffffff&amp;fg=666666&amp;s=0" /> dapat diekspansi kedalam Deret TaylorDefinisi.</p>
+</blockquote>
+<h3 id="berikut-algoritma-dari-maclaurin">Berikut algoritma dari maclaurin</h3>
+<p><img alt="png" src="../taylor.png" /></p>
+<p>Dengan algoritma diatas kita dapat menyerderhanakannya sebagai berikut:</p>
+<p><img alt="png" src="../pendek.png" /></p>
+<p>berikut contoh implementai dari maclaurin</p>
+<p>f(x)= e<sup>2x</sup>
+$$
+f(x)≈1+2x \displaystyle+\frac{{{{f}^{{\text{}}}{\left({2x^2}\right)}}}}{{{3}!}}
+\displaystyle+\frac{{{{f}^{{\text{}}}{\left({2x^3}\right)}}}}{{{3}!}}
+\displaystyle+\ldots+…
+$$</p>
+<p>sekarang kita masukan misal x=0
+$$
+f(0)≈1+2(0) \displaystyle+\frac{{{{}^{{\text{}}}{\left({2(0)^2}\right)}}}}{{{3}!}}
+ \displaystyle+\frac{{{{}^{{\text{}}}{\left({2(0)^3}\right)}}}}{{{3}!}}
+ \displaystyle+\ldots+…
+$$</p>
+<p>jadi ketika x =0 maka hasil akan tetap 1 mekipun banyak suku dan literasi </p>
+<h1 id="listing-program"><em>Listing Program</em></h1>
+<p>membuat program supaya dapaat mengekspansi bilangan e^2x dengan nilai x=4 hingga nilai menjadi kurang dari 0,001 bisa dengan listing program sebagai berikut.</p>
+<pre><code class="python">import math
+
+coba = 1
+a = 0
+b = 1
+x = int(input(&quot;masukkan x = &quot;))
+
+while coba&gt; 0.001:
+    f_x = 0
+    f_y = 0
+    for i in range(a):
+        f_x += (2**i)*x**i/math.factorial(i)
+    for j in range(b):
+        f_y += (2**j)*x**j/math.factorial(j)
+    print(&quot;suku ke &quot;, a, &quot;=&quot;, f_x)
+    print(&quot;suku ke &quot;, b, &quot;=&quot;, f_y)
+    coba = f_y-f_x
+    a+=1
+    b+=1
+    print(&quot;selisih sukunya = &quot;, coba)
+</code></pre>
+
+<p>output:</p>
+<pre><code class="python">masukkan x = 1
+suku ke  0 = 0
+suku ke  1 = 1.0
+selisih sukunya =  1.0
+suku ke  1 = 1.0
+suku ke  2 = 3.0
+selisih sukunya =  2.0
+suku ke  2 = 3.0
+suku ke  3 = 5.0
+selisih sukunya =  2.0
+suku ke  3 = 5.0
+suku ke  4 = 6.333333333333333
+selisih sukunya =  1.333333333333333
+suku ke  4 = 6.333333333333333
+suku ke  5 = 7.0
+selisih sukunya =  0.666666666666667
+suku ke  5 = 7.0
+suku ke  6 = 7.266666666666667
+selisih sukunya =  0.2666666666666666
+suku ke  6 = 7.266666666666667
+suku ke  7 = 7.355555555555555
+selisih sukunya =  0.08888888888888857
+suku ke  7 = 7.355555555555555
+suku ke  8 = 7.3809523809523805
+selisih sukunya =  0.025396825396825307
+suku ke  8 = 7.3809523809523805
+suku ke  9 = 7.387301587301587
+selisih sukunya =  0.006349206349206327
+suku ke  9 = 7.387301587301587
+suku ke  10 = 7.3887125220458545
+selisih sukunya =  0.0014109347442676778
+suku ke  10 = 7.3887125220458545
+suku ke  11 = 7.388994708994708
+selisih sukunya =  0.0002821869488531803
+
+</code></pre>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$$','$$'],['$','$']]}
+});
+</script>
+
+<p><script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Numerical%20Solution%20%28Komnum%29/" class="btn btn-neutral float-right" title="Numerical Solution">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../Numerical%20Solution%20%28Komnum%29/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
